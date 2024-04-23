@@ -1,4 +1,4 @@
-import "./pages/index.css";
+import "../pages/index.css";
 
 // Шаблон карточки
 const cardTemplate = document.querySelector("#card-template").content;
