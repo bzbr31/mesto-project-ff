@@ -1,6 +1,6 @@
 import "../src/pages/index.css";
 import { initialCards } from "./components/cards.js";
-import { createCard, cardDelete, cardLike } from "./components/card.js";
+import { createCard, deleteCard, likeCard } from "./components/card.js";
 import { openPopup, closePopup } from "./components/modal.js";
 
 const placesList = document.querySelector(".places__list");
@@ -33,17 +33,15 @@ const urlInputPopupAdd = addCardFormElement.querySelector(
   ".popup__input_type_url"
 );
 
-const allPopupsAnimated = document.querySelectorAll(".popup");
-
 const bigPicturePopup = imagePopup.querySelector(".popup__image");
 const namePlace = imagePopup.querySelector(".popup__caption");
 
-function placeContentForLoop() {
+function renderCards() {
   for (let i = 0; i < initialCards.length; i++) {
     const cardElement = createCard(
       initialCards[i],
-      cardDelete,
-      cardLike,
+      deleteCard,
+      likeCard,
       handleImagePopup
     );
     placesList.append(cardElement);
@@ -114,7 +112,7 @@ function handleAddCardFormSubmit(event) {
   addCardFormElement.reset();
 }
 
-allPopupsAnimated.forEach((modal) => {
+allPopups.forEach((modal) => {
   modal.classList.add("popup_is-animated");
 });
 
@@ -122,6 +120,6 @@ profileEditFormElement.addEventListener("submit", handleProfileEditFormSubmit);
 
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
-placeContentForLoop();
+renderCards();
 
 addPopupsEventListeners();
