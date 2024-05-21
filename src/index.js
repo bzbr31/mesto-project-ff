@@ -100,8 +100,8 @@ function handleAddCardFormSubmit(event) {
 
   const cardElement = createCard(
     newCardData,
-    cardDelete,
-    cardLike,
+    deleteCard,
+    likeCard,
     handleImagePopup
   );
 
